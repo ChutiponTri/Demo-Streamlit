@@ -22,6 +22,9 @@ class FireBase():
     def get_top_5(self, group):
         return group.sort_values(by='Score', ascending=False).head(5)
 
+    def get_highest_score(self, username, game, df):
+        return df[(df['Username'] == username) & (df['Game'] == game)]['Score'].max()
+
 if __name__ == '__main__':
     database = FireBase()
  
