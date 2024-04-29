@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 import numpy as np
-import pyautogui
 import requests
 from demo_stream_text import text, page_background
 from demo_database_onfire import FireBase
