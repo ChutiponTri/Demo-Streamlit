@@ -87,10 +87,12 @@ class Stream():
                 url = "https://notify-api.line.me/api/notify"
                 header = {"content-type": "application/x-www-form-urlencoded", "Authorization": "Bearer " + token}
                 img = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/900px-Cat03.jpg"
-                score = self.data.get_ranking_personal(self.user, self.side_select)
-                data = {"message": "%s got highest score of %s %s" % (self.user, self.side_select, score)}
+                score = self.firebase.get_database("ranking")
+                df = pd.DataFrame(score)
+                score_data = self.firebase.get_highest_score(self.user, self.side_select, df)
+                data = {"message": "%s got highest score of %s %s" % (self.user, self.side_select, score_data)}
 
-                if self.side_select != "Please Select The Game" and score != None:
+                if self.side_select != "Please Select The Game" and pd.notna(score_data):
                     messages.chat_message("user").write(data["message"])
                     messages.chat_message("assistant").write(f"Message Successfully Sent")
                     session = requests.Session()
@@ -100,7 +102,7 @@ class Stream():
                     messages.chat_message("user").write("My Game")
                     messages.chat_message("assistant").write(f"Please Select The Game")
 
-                elif score == None:
+                elif not pd.notna(score_data):
                     messages.chat_message("user").write("My Ranking")
                     messages.chat_message("assistant").write(f"Your Ranking Not Exist")
                 
