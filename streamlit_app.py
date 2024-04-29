@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
 import numpy as np
+import pyautogui
 import requests
 from demo_stream_text import text, page_background
 from demo_database_onfire import FireBase
@@ -39,7 +40,7 @@ class Stream():
         # else:
 
         # Create Current Username Label
-        self.user_list = list(self.firebase.get_database("users").keys())
+        self.user_list = list(self.firebase.get_database("customers/Username"))
         self.user = st.selectbox("Users", self.user_list)
         self.path = "database/%s_data.db" % self.user
         st.markdown(f"<h3 style='text-align:right; font-size:24px'>User : {self.user}</h3>", unsafe_allow_html=True)
@@ -49,9 +50,12 @@ class Stream():
         self.sidebar()
 
         # Initialize Database File
-        table_names = "users/%s" % self.user
-        self.sheetname_list = list(self.firebase.get_database(table_names).keys())
-        self.sheetname_list.insert(0, "Please Select Data")
+        try:
+            table_names = "users/%s" % self.user
+            self.sheetname_list = list(self.firebase.get_database(table_names).keys())
+            self.sheetname_list.insert(0, "Please Select Data")
+        except:
+            self.sheetname_list = ["Please Select Data"]
         try:
             self.sheetname_list.remove("overview")
         except:
@@ -117,6 +121,8 @@ class Stream():
                     game = top_5_scores.reset_index(drop=True)
                     game.index += 1
                     st.dataframe(game, width=800)
+                else:
+                    st.write("## No Data")
             
             # Set up Introduction layout
             else:
@@ -296,6 +302,8 @@ class Stream():
             record_df.index += 1
             if len(record_df) != 0:
                 st.dataframe(record_df, width=800)
+            else:
+                st.write("## No Data")
     
     # Function To Create Login Page
     # def login(self):
