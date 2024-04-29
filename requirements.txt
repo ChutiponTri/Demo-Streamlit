@@ -1,6 +1,5 @@
 streamlit == 1.31.1
 firebase-admin == 6.5.0
-PyAutoGUI == 0.9.54
 requests == 2.31.0
 pandas == 2.2.1
 numpy == 1.26.4
