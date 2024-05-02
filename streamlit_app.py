@@ -28,7 +28,12 @@ class Stream():
 
         # Initialize Config
         st.set_page_config(page_title="ALL Wheelchair", page_icon="♿")
-
+        hide_header = """"
+                    <style>
+                    #MainMenu {visibility: hidden};
+                    footer {visibility: hidden}
+                    </style>"""
+        st.markdown(hide_header, unsafe_allow_html=True)
         # initialize database
         # self.data = Database()
         # account = self.data.check_current_user()
