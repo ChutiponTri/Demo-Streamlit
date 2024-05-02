@@ -35,6 +35,7 @@ class Stream():
                     header {visibility: hidden;}
                     </style>"""
         st.markdown(hide_header, unsafe_allow_html=True)
+
         # initialize database
         # self.data = Database()
         # account = self.data.check_current_user()
@@ -120,11 +121,13 @@ class Stream():
             if self.side_select != "Please Select The Game":
                 st.header(f":rainbow[{self.side_select}]")
                 st.subheader(f"Top 5 Scores of {self.side_select} are :", divider="rainbow")
-                ranking = self.firebase.get_database("ranking")
+                ranking = self.firebase.get_database("storage")
                 if len(ranking) != 0:
                     df = pd.DataFrame(ranking)[score_order]
                     df['Score'] = pd.to_numeric(df["Score"], errors="coerce")
-                    top_5_scores = df.groupby('Game').apply(self.firebase.get_top_5).loc[self.side_select]
+                    
+                    selected = df[df["Game"] == self.side_select]
+                    top_5_scores = selected.sort_values(by="Score", ascending=False).head(5)
                     game = top_5_scores.reset_index(drop=True)
                     game.index += 1
                     st.dataframe(game, width=800)
@@ -197,7 +200,6 @@ class Stream():
                 if len(overview) != 0:
                     # Create DataFrame
                     df = pd.DataFrame(overview)
-                    df = df[overview_order]
                     st.dataframe(df, width=800, hide_index=True)
             except:
                 st.write("## No Data")
