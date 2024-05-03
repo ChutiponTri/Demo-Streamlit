@@ -30,7 +30,7 @@ class Stream():
         st.set_page_config(page_title="ALL Wheelchair", page_icon="♿")
         hide_header = """
                     <style>
-                    #MainMenu {visibility: hidden;}
+                    # MainMenu {visibility: hidden;}
                     footer {visibility: hidden;}
                     header {visibility: hidden;}
                     </style>"""
@@ -200,6 +200,7 @@ class Stream():
                 if len(overview) != 0:
                     # Create DataFrame
                     df = pd.DataFrame(overview)
+                    df = df[overview_order]
                     st.dataframe(df, width=800, hide_index=True)
             except:
                 st.write("## No Data")
