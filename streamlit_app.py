@@ -127,7 +127,7 @@ class Stream():
                     df['Score'] = pd.to_numeric(df["Score"], errors="coerce")
                     
                     selected = df[df["Game"] == self.side_select]
-                    top_5_scores = selected.sort_values(by="Score", ascending=False).head(5)
+                    top_5_scores = selected.sort_values(by="Score", ascending=False).drop_duplicates("Username").nlargest(5, "Score")
                     game = top_5_scores.reset_index(drop=True)
                     game.index += 1
                     st.dataframe(game, width=800)
