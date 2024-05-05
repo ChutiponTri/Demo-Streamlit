@@ -200,7 +200,10 @@ class Stream():
                 if len(overview) != 0:
                     # Create DataFrame
                     df = pd.DataFrame(overview)
-                    df = df[overview_order]
+                    try:
+                        df = df[overview_order]
+                    except:
+                        pass
                     st.dataframe(df, width=800, hide_index=True)
             except:
                 st.write("## No Data")
@@ -223,7 +226,10 @@ class Stream():
                 raw_data_path = "users/%s/%s" % (self.user, datasheet)
                 data = self.firebase.get_database(raw_data_path)
                 df = pd.DataFrame(data)
-                df = df[raw_data_order]
+                try:
+                    df = df[raw_data_order]
+                except:
+                    pass
                 # Create View Mode Condition
                 if choice == "Graph View":
                     for column in df.columns:
