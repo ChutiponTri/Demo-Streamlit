@@ -7,10 +7,11 @@ from demo_stream_text import text, page_background
 from demo_database_onfire import FireBase
 
 score_order = ["Username", "Game", "Score", "Start", "Finish", "Accuracy"]
-overview_order = ["Timestamp", "TimeUsage", "Rotate1", "Dist1", "MeanVel1", "MaxVel1", "Power1", "Rotate2", "Dist2", "MeanVel2", "MaxVel2", "Power2", "AvgHR", "MaxHR", "Calorie", "Zone"]
-raw_data_order = ["Start Time", "Stop Time", "Accel X1", "Accel Y1", "Accel Z1", "Gyro X1", "Gyro Y1", "Gyro Z1",
-                  "Accel X2", "Accel Y2", "Accel Z2", "Gyro X2", "Gyro Y2", "Gyro Z2", "Heart Rate"]
-tabs = ["Game Ranking", "Recent Score", "Overview Data", "Motion Analysis", "Sign in History"]
+overview_order = ["Timestamp", "TimeUsage", "Rotate1", "Dist1", "MeanVel1", "MaxVel1", "Power1", "Rotate2", "Dist2", 
+                  "MeanVel2", "MaxVel2", "Power2", "AvgHR", "MaxHR", "Calorie", "Zone"]
+raw_data_order = ["Start Time", "Stop Time", "Accel X1", "Accel Y1", "Accel Z1", "Gyro X1", "Gyro Y1", "Gyro Z1", "Raw Dist1", "Raw Vel1"
+                "Accel X2", "Accel Y2", "Accel Z2", "Gyro X2", "Gyro Y2", "Gyro Z2", "Heart Rate", "Raw Dist2", "Raw Vel2"]
+tabs = ["Game Ranking", "Recent Score", "Overview Data", "Motion Analysis", "Raw Data", "Sign in History"]
 game = ["Please Select The Game", "AlienInvasion", "BouncingBall", "LuckyBird"]
 view = ["Raw Data", "Graph View"]
 accel_x = ["Accel X1", "Accel X2"]
@@ -66,9 +67,13 @@ class Stream():
             self.sheetname_list.remove("overview")
         except:
             pass
+            
+        self.dup = self.sheetname_list.copy()
+        self.dup.insert(0, "Please Select")
+        self.dup.remove("Please Select Data")
 
         # Initialize Tab Widget
-        self.game, self.score, self.overview, self.motion, self.record = st.tabs(tabs)
+        self.game, self.score, self.overview, self.motion, self.raw, self.record = st.tabs(tabs)
 
         # Function To Create Tabs
         self.tab1_ui()
@@ -76,6 +81,7 @@ class Stream():
         self.tab3_ui()
         self.tab4_ui()
         self.tab5_ui()
+        self.tab6_ui()
 
     def sidebar(self):
         with st.sidebar:
@@ -191,7 +197,7 @@ class Stream():
     def tab3_ui(self):
         with self.overview:
             # Header
-            st.header("Overview Data", divider="rainbow")
+            st.header("Overview Data 🕵🏻", divider="rainbow")
 
             # Get The Overview Data
             try:
@@ -240,61 +246,67 @@ class Stream():
 
                     # Create Accel X Plot
                     st.write("## Accel X")
-                    fig1 = plt.figure()
-                    plt.plot(df[accel_x], label=accel_x)
-                    plt.legend(loc="upper right")
-                    plt.xlabel("Data")
-                    plt.ylabel("Accel X")
-                    st.write(fig1)
+                    st.line_chart(df[accel_x], color=["#FF0000", "#0000FF"])
+                    # fig1 = plt.figure()
+                    # plt.plot(df[accel_x], label=accel_x)
+                    # plt.legend(loc="upper right")
+                    # plt.xlabel("Data")
+                    # plt.ylabel("Accel X")
+                    # st.write(fig1)
 
                     # Create Accel Y Plot
                     st.write("## Accel Y")
-                    fig2 = plt.figure()
-                    plt.plot(df[accel_y], label=accel_y)
-                    plt.legend(loc="upper right")
-                    plt.xlabel("Data")
-                    plt.ylabel("Accel Y")
-                    st.write(fig2)
+                    st.line_chart(df[accel_y], color=["#FF0000", "#0000FF"])
+                    # fig2 = plt.figure()
+                    # plt.plot(df[accel_y], label=accel_y)
+                    # plt.legend(loc="upper right")
+                    # plt.xlabel("Data")
+                    # plt.ylabel("Accel Y")
+                    # st.write(fig2)
 
                     try:
                         if len(df[accel_z]) > 1:
                             # Create Accel Z Plot
                             st.write("## Accel Z")
-                            fig3 = plt.figure()
-                            plt.plot(df[accel_z], label=accel_z)
-                            plt.legend(loc="upper right")
-                            plt.xlabel("Data")
-                            plt.ylabel("Accel Z")
-                            st.write(fig3)
+                            st.line_chart(df[accel_z], color=["#FF0000", "#0000FF"])
+                            # fig3 = plt.figure()
+                            # plt.plot(df[accel_z], label=accel_z)
+                            # plt.legend(loc="upper right")
+                            # plt.xlabel("Data")
+                            # plt.ylabel("Accel Z")
+                            # st.write(fig3)
 
                             # Create Gyro X Plot
                             st.write("## Gyro X")
-                            fig4 = plt.figure()
-                            plt.plot(df[gyro_x], label=gyro_y)
-                            plt.legend(loc="upper right")
-                            plt.xlabel("Data")
-                            plt.ylabel("Gyro X")
-                            st.write(fig4)
+                            st.line_chart(df[gyro_x], color=["#FF0000", "#0000FF"])
+                            # fig4 = plt.figure()
+                            # plt.plot(df[gyro_x], label=gyro_y)
+                            # plt.legend(loc="upper right")
+                            # plt.xlabel("Data")
+                            # plt.ylabel("Gyro X")
+                            # st.write(fig4)
 
                             # Create Gyro Y Plot
                             st.write("## Gyro Y")
-                            fig5 = plt.figure()
-                            plt.plot(df[gyro_y], label=gyro_y)
-                            plt.legend(loc="upper right")
-                            plt.xlabel("Data")
-                            plt.ylabel("Gyro Y")
-                            st.write(fig5)
+                            st.line_chart(df[gyro_y], color=["#FF0000", "#0000FF"])
+                            # fig5 = plt.figure()
+                            # plt.plot(df[gyro_y], label=gyro_y)
+                            # plt.legend(loc="upper right")
+                            # plt.xlabel("Data")
+                            # plt.ylabel("Gyro Y")
+                            # st.write(fig5)
                     except:
                         pass
 
                     # Create Gyro Z Plot
                     st.write("## Gyro Z")
-                    fig6 = plt.figure()
-                    plt.plot(df[gyro_z], label=gyro_z)
-                    plt.legend(loc="upper right")
-                    plt.xlabel("Data")
-                    plt.ylabel("Gyro Z")
-                    st.write(fig6)
+                    st.line_chart(df[gyro_z], color=["#FF0000", "#0000FF"])
+                    # fig6 = plt.figure()
+                    # plt.plot(df[gyro_z], label=gyro_z)
+                    # plt.legend(loc="upper right")
+                    # plt.xlabel("Data")
+                    # plt.ylabel("Gyro Z")
+                    # st.write(fig6)
 
                 elif choice == "Raw Data":
                     # Create SQL DataFrame
@@ -302,12 +314,49 @@ class Stream():
                     st.write("## Raw Data")
                     st.write(f"{len(df)} Data Points")
                     st.dataframe(df, height=800)
-    
+
     # Function to Create Tab5 UI
     def tab5_ui(self):
+        with self.raw:
+            # Header 
+            st.header("Raw Data 👩🏻‍💻", divider="rainbow")
+
+            # Create Column For Data Selection  
+            col1, col2, col3 =  st.columns([0.2, 0.6, 0.2])
+
+            # Create Select Box
+            datasheet = st.selectbox("Please Select Datasheet", options=self.dup)
+
+            try:
+                if datasheet != "Please Select" :
+                    # Load Data From Database
+                    pd.set_option('future.no_silent_downcasting', True)
+                    raw_data_path = "users/%s/%s" % (self.user, datasheet)
+                    data = self.firebase.get_database(raw_data_path)
+                    df = pd.DataFrame(data)
+                    df = df[["Raw Dist1", "Raw Vel1", "Raw Dist2", "Raw Vel2"]]
+                    df["Raw Dist1"] = df["Raw Dist1"].replace({"NA" : 0})
+                    df["Raw Vel1"] = df["Raw Vel1"].replace({"NA" : 0})
+                    df["Raw Dist2"] = df["Raw Dist2"].replace({"NA" : 0})
+                    df["Raw Vel2"] = df["Raw Vel2"].replace({"NA" : 0})
+                    df[["Raw Dist1", "Raw Vel1", "Raw Dist2", "Raw Vel2"]] = df[["Raw Dist1", "Raw Vel1", "Raw Dist2", "Raw Vel2"]].apply(pd.to_numeric)
+
+                    st.write("## Raw Distance")
+                    st.line_chart(df, y=["Raw Dist1", "Raw Dist2"], color=["#FF0000", "#0000FF"])
+                    # ff = plt.figure()
+                    # plt.plot(df[["Raw Dist1", "Raw Dist2"]])
+                    # st.write(ff)
+                    
+                    st.write("## Raw Velocity")
+                    st.line_chart(df, y=["Raw Vel1", "Raw Vel2"], color=["#FF0000", "#0000FF"])
+            except Exception as e:
+                st.write("## No Data")
+
+    # Function to Create Tab6 UI
+    def tab6_ui(self):
         with self.record:
             # Header
-            st.header("Sign in History", divider="rainbow")
+            st.header("Sign in History 🧑🏻‍💻", divider="rainbow")
 
             # Create Record DataFrame 
             record = self.firebase.get_database("current")
