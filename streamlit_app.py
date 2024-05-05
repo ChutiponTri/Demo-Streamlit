@@ -340,15 +340,23 @@ class Stream():
                     df["Raw Dist2"] = df["Raw Dist2"].replace({"NA" : 0})
                     df["Raw Vel2"] = df["Raw Vel2"].replace({"NA" : 0})
                     df[["Raw Dist1", "Raw Vel1", "Raw Dist2", "Raw Vel2"]] = df[["Raw Dist1", "Raw Vel1", "Raw Dist2", "Raw Vel2"]].apply(pd.to_numeric)
+                    
+                    # Initialize Plot Style
+                    plt.style.use("https://github.com/dhaitz/matplotlib-stylesheets/raw/master/pitayasmoothie-dark.mplstyle")
 
                     st.write("## Raw Distance")
-                    st.line_chart(df, y=["Raw Dist1", "Raw Dist2"], color=["#FF0000", "#0000FF"])
-                    # ff = plt.figure()
-                    # plt.plot(df[["Raw Dist1", "Raw Dist2"]])
-                    # st.write(ff)
+                    # st.line_chart(df, y=["Raw Dist1", "Raw Dist2"], color=["#FF0000", "#0000FF"])
+                    tab5_fig1 = plt.figure()
+                    plt.plot(df["Raw Dist1"], color="#FF0000")
+                    plt.plot(df["Raw Dist2"], color="#0000FF")
+                    st.write(tab5_fig1)
                     
                     st.write("## Raw Velocity")
-                    st.line_chart(df, y=["Raw Vel1", "Raw Vel2"], color=["#FF0000", "#0000FF"])
+                    # st.line_chart(df, y=["Raw Vel1", "Raw Vel2"], color=["#FF0000", "#0000FF"])
+                    tab5_fig2 = plt.figure()
+                    plt.plot(df["Raw Vel1"], color="#FF0000")
+                    plt.plot(df["Raw Vel2"], color="#0000FF")
+                    st.write(tab5_fig2)
             except Exception as e:
                 st.write("## No Data")
 
