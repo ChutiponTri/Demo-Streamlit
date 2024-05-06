@@ -349,8 +349,7 @@ class Stream():
                     tab5_fig1 = plt.figure()
                     plt.plot(df["Raw Dist1"], color="#FF0000", label="Raw Dist1")
                     plt.plot(df["Raw Dist2"], color="#0000FF", label="Raw Dist2")
-                    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05),
-                    fancybox=True, shadow=True, ncol=5)
+                    plt.legend(loc="best")
                     plt.xlabel("Data")
                     plt.ylabel("Distance")
                     st.write(tab5_fig1)
@@ -363,8 +362,7 @@ class Stream():
                     tab5_fig2 = plt.figure()
                     plt.plot(df["Raw Vel1"], color="#FF0000", label="Raw Vel1")
                     plt.plot(df["Raw Vel2"], color="#0000FF", label="Raw Vel2")
-                    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05),
-                    fancybox=True, shadow=True, ncol=5)
+                    plt.legend(loc="best")
                     plt.xlabel("Data")
                     plt.ylabel("Velocity")
                     st.write(tab5_fig2)
