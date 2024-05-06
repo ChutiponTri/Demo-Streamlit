@@ -11,7 +11,7 @@ overview_order = ["Timestamp", "TimeUsage", "Rotate1", "Dist1", "MeanVel1", "Max
                   "MeanVel2", "MaxVel2", "Power2", "AvgHR", "MaxHR", "Calorie", "Zone"]
 raw_data_order = ["Start Time", "Stop Time", "Accel X1", "Accel Y1", "Accel Z1", "Gyro X1", "Gyro Y1", "Gyro Z1", "Raw Dist1", "Raw Vel1"
                 "Accel X2", "Accel Y2", "Accel Z2", "Gyro X2", "Gyro Y2", "Gyro Z2", "Heart Rate", "Raw Dist2", "Raw Vel2"]
-tabs = ["Game Ranking", "Recent Score", "Overview Data", "Motion Analysis", "Raw Data", "Sign in History"]
+tabs = ["Game Ranking", "Recent Score", "Overview Data", "Motion Analysis", "Raw Motion", "Sign in History"]
 game = ["Please Select The Game", "AlienInvasion", "BouncingBall", "LuckyBird"]
 view = ["Raw Data", "Graph View"]
 accel_x = ["Accel X1", "Accel X2"]
