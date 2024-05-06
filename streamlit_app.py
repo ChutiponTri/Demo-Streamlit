@@ -259,7 +259,7 @@ class Stream():
                     # st.line_chart(df[accel_y], color=["#FF0000", "#0000FF"])
                     fig2 = plt.figure()
                     plt.plot(df[accel_y], label=accel_y)
-                    plt.legend(loc="upper right")
+                    plt.legend(bbox_to_anchor =(0.5,-0.27), loc='lower center')
                     plt.xlabel("Data")
                     plt.ylabel("Accel Y")
                     st.write(fig2)
