@@ -325,7 +325,7 @@ class Stream():
             col1, col2, col3 =  st.columns([0.2, 0.6, 0.2])
 
             # Create Select Box
-            datasheet = st.selectbox("Please Select Datasheet", options=self.dup)
+            datasheet = col2.selectbox("Please Select Datasheet", options=self.dup)
 
             try:
                 if datasheet != "Please Select" :
@@ -350,6 +350,9 @@ class Stream():
                     plt.plot(df["Raw Dist1"], color="#FF0000")
                     plt.plot(df["Raw Dist2"], color="#0000FF")
                     st.write(tab5_fig1)
+                    dist1, dist2 = st.columns(2)
+                    dist1.write("Distance 1 : %.2f" % np.max(df["Raw Dist1"]))
+                    dist2.write("Distance 2 : %.2f" % np.max(df["Raw Dist2"]))
                     
                     st.write("## Raw Velocity")
                     # st.line_chart(df, y=["Raw Vel1", "Raw Vel2"], color=["#FF0000", "#0000FF"])
@@ -357,6 +360,12 @@ class Stream():
                     plt.plot(df["Raw Vel1"], color="#FF0000")
                     plt.plot(df["Raw Vel2"], color="#0000FF")
                     st.write(tab5_fig2)
+                    max1, max2 = st.columns(2)
+                    max1.write("Max Velocity 1 : %.2f" % np.max(np.abs(df["Raw Vel1"])))
+                    max2.write("Max Velocity 2 : %.2f" % np.max(np.abs(df["Raw Vel2"])))
+                    mean1, mean2 = st.columns(2)
+                    mean1.write("Mean Velocity 1 : %.2f" % np.mean(np.abs(df["Raw Vel1"])))
+                    mean2.write("Mean Velocity 2 : %.2f" % np.mean(np.abs(df["Raw Vel2"])))
             except Exception as e:
                 st.write("## No Data")
 
