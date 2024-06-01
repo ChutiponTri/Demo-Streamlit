@@ -352,7 +352,6 @@ class Stream():
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Distance (m)")
-                    tab5_fig1 = tls.mpl_to_plotly(tab5_fig1)
                     st.plotly_chart(tab5_fig1)
                     dist1, dist2 = st.columns(2)
                     dist1.write("Distance 1 : %.2f m" % np.max(df["Raw Dist1"]))
