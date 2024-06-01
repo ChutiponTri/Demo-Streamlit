@@ -91,7 +91,6 @@ class Stream():
             # Create Toggle
             if st.toggle("Background", value=False):
                 st.markdown(page_background, unsafe_allow_html=True)
-
             # Create Chat
             messages = st.container(height=200)
             col1, col2 = st.columns(2)
@@ -251,20 +250,20 @@ class Stream():
                     # st.line_chart(df[accel_x], color=["#FF0000", "#0000FF"])
                     fig1 = plt.figure()
                     plt.plot(df[accel_x], label=accel_x)
-                    plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
+                    plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Accel X (g)")
-                    st.write(fig1)
+                    st.plotly_chart(fig1)
 
                     # Create Accel Y Plot
                     st.write("## Accel Y")
                     # st.line_chart(df[accel_y], color=["#FF0000", "#0000FF"])
                     fig2 = plt.figure()
                     plt.plot(df[accel_y], label=accel_y)
-                    plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
+                    plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Accel Y (g)")
-                    st.write(fig2)
+                    st.plotly_chart(fig2)
 
                     try:
                         if len(df[accel_z]) > 1:
@@ -273,30 +272,30 @@ class Stream():
                             # st.line_chart(df[accel_z], color=["#FF0000", "#0000FF"])
                             fig3 = plt.figure()
                             plt.plot(df[accel_z], label=accel_z)
-                            plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
+                            plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                             plt.xlabel("Data")
                             plt.ylabel("Accel Z (g)")
-                            st.write(fig3)
+                            st.plotly_chart(fig3)
 
                             # Create Gyro X Plot
                             st.write("## Gyro X")
                             # st.line_chart(df[gyro_x], color=["#FF0000", "#0000FF"])
                             fig4 = plt.figure()
                             plt.plot(df[gyro_x], label=gyro_y)
-                            plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
+                            plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                             plt.xlabel("Data")
                             plt.ylabel("Gyro X (deg/s)")
-                            st.write(fig4)
+                            st.plotly_chart(fig4)
 
                             # Create Gyro Y Plot
                             st.write("## Gyro Y")
                             # st.line_chart(df[gyro_y], color=["#FF0000", "#0000FF"])
                             fig5 = plt.figure()
                             plt.plot(df[gyro_y], label=gyro_y)
-                            plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
+                            plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                             plt.xlabel("Data")
                             plt.ylabel("Gyro Y (deg/s)")
-                            st.write(fig5)
+                            st.plotly_chart(fig5)
                     except:
                         pass
 
@@ -305,10 +304,10 @@ class Stream():
                     # st.line_chart(df[gyro_z], color=["#FF0000", "#0000FF"])
                     fig6 = plt.figure()
                     plt.plot(df[gyro_z], label=gyro_z)
-                    plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
+                    plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Gyro Z (deg/s)")
-                    st.write(fig6)
+                    st.plotly_chart(fig6)
 
                 elif choice == "Raw Data":
                     # Create SQL DataFrame
@@ -347,33 +346,33 @@ class Stream():
                     plt.style.use("https://github.com/dhaitz/matplotlib-stylesheets/raw/master/pitayasmoothie-dark.mplstyle")
 
                     st.write("## Raw Distance")
-                    # st.line_chart(df, y=["Raw Dist1", "Raw Dist2"], color=["#FF0000", "#0000FF"])
                     tab5_fig1 = plt.figure()
                     plt.plot(df["Raw Dist1"], color="#FF0000", label="Raw Dist1")
                     plt.plot(df["Raw Dist2"], color="#0000FF", label="Raw Dist2")
-                    plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
+                    plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Distance (m)")
-                    st.write(tab5_fig1)
+                    tab5_fig1 = tls.mpl_to_plotly(tab5_fig1)
+                    st.plotly_chart(tab5_fig1)
                     dist1, dist2 = st.columns(2)
                     dist1.write("Distance 1 : %.2f m" % np.max(df["Raw Dist1"]))
                     dist2.write("Distance 2 : %.2f m" % np.max(df["Raw Dist2"]))
                     
                     st.write("## Raw Velocity")
-                    # st.line_chart(df, y=["Raw Vel1", "Raw Vel2"], color=["#FF0000", "#0000FF"])
                     tab5_fig2 = plt.figure()
                     plt.plot(df["Raw Vel1"], color="#FF0000", label="Raw Vel1")
                     plt.plot(df["Raw Vel2"], color="#0000FF", label="Raw Vel2")
-                    plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
+                    plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Velocity (m/s)")
-                    st.write(tab5_fig2)
+                    st.plotly_chart(tab5_fig2)
                     max1, max2 = st.columns(2)
                     max1.write("Max Velocity 1 : %.2f m/s" % np.max(np.abs(df["Raw Vel1"])))
                     max2.write("Max Velocity 2 : %.2f m/s" % np.max(np.abs(df["Raw Vel2"])))
                     mean1, mean2 = st.columns(2)
                     mean1.write("Mean Velocity 1 : %.2f m/s" % np.mean(np.abs(df["Raw Vel1"])))
                     mean2.write("Mean Velocity 2 : %.2f m/s" % np.mean(np.abs(df["Raw Vel2"])))
+
             except Exception as e:
                 st.write("## No Data")
 
