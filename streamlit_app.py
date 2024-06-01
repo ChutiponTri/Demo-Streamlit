@@ -374,7 +374,7 @@ class Stream():
                     mean2.write("Mean Velocity 2 : %.2f m/s" % np.mean(np.abs(df["Raw Vel2"])))
 
             except Exception as e:
-                st.write("## No Data")
+                st.write("## No Data", e)
 
     # Function to Create Tab6 UI
     def tab6_ui(self):
