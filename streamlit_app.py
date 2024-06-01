@@ -253,7 +253,7 @@ class Stream():
                     plt.plot(df[accel_x], label=accel_x)
                     plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
                     plt.xlabel("Data")
-                    plt.ylabel("Accel X")
+                    plt.ylabel("Accel X (g)")
                     st.write(fig1)
 
                     # Create Accel Y Plot
@@ -263,7 +263,7 @@ class Stream():
                     plt.plot(df[accel_y], label=accel_y)
                     plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
                     plt.xlabel("Data")
-                    plt.ylabel("Accel Y")
+                    plt.ylabel("Accel Y (g)")
                     st.write(fig2)
 
                     try:
@@ -275,7 +275,7 @@ class Stream():
                             plt.plot(df[accel_z], label=accel_z)
                             plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
                             plt.xlabel("Data")
-                            plt.ylabel("Accel Z")
+                            plt.ylabel("Accel Z (g)")
                             st.write(fig3)
 
                             # Create Gyro X Plot
@@ -285,7 +285,7 @@ class Stream():
                             plt.plot(df[gyro_x], label=gyro_y)
                             plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
                             plt.xlabel("Data")
-                            plt.ylabel("Gyro X")
+                            plt.ylabel("Gyro X (deg/s)")
                             st.write(fig4)
 
                             # Create Gyro Y Plot
@@ -295,7 +295,7 @@ class Stream():
                             plt.plot(df[gyro_y], label=gyro_y)
                             plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
                             plt.xlabel("Data")
-                            plt.ylabel("Gyro Y")
+                            plt.ylabel("Gyro Y (deg/s)")
                             st.write(fig5)
                     except:
                         pass
@@ -307,7 +307,7 @@ class Stream():
                     plt.plot(df[gyro_z], label=gyro_z)
                     plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
                     plt.xlabel("Data")
-                    plt.ylabel("Gyro Z")
+                    plt.ylabel("Gyro Z (deg/s)")
                     st.write(fig6)
 
                 elif choice == "Raw Data":
@@ -353,7 +353,7 @@ class Stream():
                     plt.plot(df["Raw Dist2"], color="#0000FF", label="Raw Dist2")
                     plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
                     plt.xlabel("Data")
-                    plt.ylabel("Distance")
+                    plt.ylabel("Distance (m)")
                     st.write(tab5_fig1)
                     dist1, dist2 = st.columns(2)
                     dist1.write("Distance 1 : %.2f m" % np.max(df["Raw Dist1"]))
@@ -366,7 +366,7 @@ class Stream():
                     plt.plot(df["Raw Vel2"], color="#0000FF", label="Raw Vel2")
                     plt.legend(bbox_to_anchor=(0.9, 1.1), loc='upper center')
                     plt.xlabel("Data")
-                    plt.ylabel("Velocity")
+                    plt.ylabel("Velocity (m/s)")
                     st.write(tab5_fig2)
                     max1, max2 = st.columns(2)
                     max1.write("Max Velocity 1 : %.2f m/s" % np.max(np.abs(df["Raw Vel1"])))
