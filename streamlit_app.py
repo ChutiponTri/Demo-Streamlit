@@ -11,7 +11,7 @@ overview_order = ["Timestamp", "TimeUsage", "Rotate1", "Dist1", "MeanVel1", "Max
                   "MeanVel2", "MaxVel2", "Power2", "AvgHR", "MaxHR", "Calorie", "Zone"]
 raw_data_order = ["Start Time", "Stop Time", "Accel X1", "Accel Y1", "Accel Z1", "Gyro X1", "Gyro Y1", "Gyro Z1", "Raw Dist1", "Raw Vel1"
                 "Accel X2", "Accel Y2", "Accel Z2", "Gyro X2", "Gyro Y2", "Gyro Z2", "Heart Rate", "Raw Dist2", "Raw Vel2"]
-tabs = ["Game Ranking", "Recent Score", "Overview Data", "Motion Analysis", "Raw Motion", "Sign in History"]
+tabs = ["Game Ranking", "Recent Score", "Overview Data", "Motion Analysis", "Raw Data", "Sign in History"]
 game = ["Please Select The Game", "AlienInvasion", "BouncingBall", "LuckyBird"]
 view = ["Raw Data", "Graph View"]
 accel_x = ["Accel X1", "Accel X2"]
@@ -335,6 +335,8 @@ class Stream():
                     raw_data_path = "users/%s/%s" % (self.user, datasheet)
                     data = self.firebase.get_database(raw_data_path)
                     df = pd.DataFrame(data)
+                    if df["Heart Rate"][0] != "NA":
+                        self.heart = pd.to_numeric(df["Heart Rate"][df["Heart Rate"] != "NA"], errors="coerce")
                     df = df[["Raw Dist1", "Raw Vel1", "Raw Dist2", "Raw Vel2"]]
                     df["Raw Dist1"] = df["Raw Dist1"].replace({"NA" : 0})
                     df["Raw Vel1"] = df["Raw Vel1"].replace({"NA" : 0})
@@ -371,6 +373,17 @@ class Stream():
                     mean1, mean2 = st.columns(2)
                     mean1.write("Mean Velocity 1 : %.2f m/s" % np.mean(np.abs(df["Raw Vel1"])))
                     mean2.write("Mean Velocity 2 : %.2f m/s" % np.mean(np.abs(df["Raw Vel2"])))
+
+                    if hasattr(self, "heart"):
+                        st.write("## Heart Rate")
+                        tab5_fig3 = plt.figure()
+                        plt.plot(self.heart, color="#03C04A", label="Heart Rate")
+                        plt.xlabel("Data")
+                        plt.ylabel("Heart Rate (bpm)")
+                        st.plotly_chart(tab5_fig3)
+                        heart1, heart2 = st.columns(2)
+                        heart1.write("Max Heart Rate : %.2f bpm" % np.max(self.heart))
+                        heart2.write("Mean Heart Rate : %.2f bpm" % np.mean(self.heart))
 
             except Exception as e:
                 st.write("## No Data", e)
