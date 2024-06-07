@@ -60,7 +60,7 @@ class Stream():
         try:
             table_names = "users/%s" % self.user
             # self.sheetname_list = list(self.firebase.get_database(table_names).keys())
-          self.sheetname_list = list(self.firebase.ref.child(table_names).get(shallow=True).keys())
+            self.sheetname_list = list(self.firebase.ref.child(table_names).get(shallow=True).keys())
             self.sheetname_list.insert(0, "Please Select Data")
         except:
             self.sheetname_list = ["Please Select Data"]
