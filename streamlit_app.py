@@ -95,7 +95,7 @@ class Stream():
             # Create Chat
             messages = st.container(height=200)
             col1, col2 = st.columns(2)
-            col2.link_button("Demo", "https://ton-server-demonstration.streamlit.app/")
+            col2.link_button("Demo", "https://all-wheelchair-dashboard.streamlit.app/")
             if prompt := col1.button("Share My Score"):
                 token = "TtK9sTE06I8itQbl75gFdcwjdYertYmIbQEhTr7V0Mg"
                 # token = "chh83xOVBvxqA4IVaFuYQKgYwdWAQanTMBU4WAyf6rC"
