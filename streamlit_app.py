@@ -60,9 +60,10 @@ class Stream():
         try:
             table_names = "users/%s" % self.user
             # self.sheetname_list = list(self.firebase.get_database(table_names).keys())
-            self.sheetname_list = list(self.firebase.ref.child(table_names).get(shallow=True).keys())
+            self.sheetname_list = list(self.firebase.ref.child(table_names).shallow().get().val())
             self.sheetname_list.insert(0, "Please Select Data")
-        except:
+        except Exception as e:
+            print(e)
             self.sheetname_list = ["Please Select Data"]
         try:
             self.sheetname_list.remove("overview")
@@ -121,21 +122,20 @@ class Stream():
                     messages.chat_message("user").write("My Ranking")
                     messages.chat_message("assistant").write(f"Your Ranking Not Exist")
                 
-
     # Function to Create Tab1 UI
     def tab1_ui(self):
         with self.game:
             # Set up Game Selection layout
             if self.side_select != "Please Select The Game":
                 st.header(f":rainbow[{self.side_select}]")
-                st.subheader(f"Top 5 Scores of {self.side_select} are :", divider="rainbow")
+                st.subheader(f"Top Scores of {self.side_select} are :", divider="rainbow")
                 ranking = self.firebase.get_database("storage")
                 if len(ranking) != 0:
                     df = pd.DataFrame(ranking)[score_order]
                     df['Score'] = pd.to_numeric(df["Score"], errors="coerce")
                     
                     selected = df[df["Game"] == self.side_select]
-                    top_5_scores = selected.sort_values(by="Score", ascending=False).drop_duplicates("Username").nlargest(5, "Score")
+                    top_5_scores = selected.sort_values(by="Score", ascending=False).drop_duplicates("Username").nlargest(10, "Score")
                     game = top_5_scores.reset_index(drop=True)
                     game.index += 1
                     st.dataframe(game, width=800)
@@ -244,7 +244,7 @@ class Stream():
                         df[column] = pd.to_numeric(df[column], errors="coerce")
 
                     # Initialize Plot Style
-                    plt.style.use("https://github.com/dhaitz/matplotlib-stylesheets/raw/master/pitayasmoothie-dark.mplstyle")
+                    plt.style.use("classic")
 
                     # Create Accel X Plot
                     st.write("## Accel X")
@@ -346,7 +346,7 @@ class Stream():
                     df[["Raw Dist1", "Raw Vel1", "Raw Dist2", "Raw Vel2"]] = df[["Raw Dist1", "Raw Vel1", "Raw Dist2", "Raw Vel2"]].apply(pd.to_numeric)
                     
                     # Initialize Plot Style
-                    plt.style.use("https://github.com/dhaitz/matplotlib-stylesheets/raw/master/pitayasmoothie-dark.mplstyle")
+                    plt.style.use("classic")
 
                     st.write("## Raw Distance")
                     tab5_fig1 = plt.figure()
