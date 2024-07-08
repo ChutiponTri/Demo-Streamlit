@@ -5,7 +5,7 @@ class FireBase():
     def __init__(self):
         if not firebase_admin._apps:
             # Initialize Firebase Admin SDK with service account credentials
-            self.cred = credentials.Certificate("database/allwheelchair-firebase-adminsdk-rjisr-e43646aa27.json")
+            self.cred = credentials.Certificate("database/allwheelchair.json")
             firebase_admin.initialize_app(self.cred, {
                 'databaseURL': 'https://allwheelchair-default-rtdb.asia-southeast1.firebasedatabase.app/'
             })
