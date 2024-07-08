@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "allwheelchair",
+  "private_key_id": "ec01781347314d4b4f968086ec27a2f9c23bce1a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC+KXbSfK9YQHQB\nBC19uDL7WWVGBg3HUaC6TEWTu+AP2ip2vCUnZtW0blUoN1x5G5Y7nUnyVfkSzxTn\n1yzhHKo+UifyAUxBladhoTKEqtjfWJ0Yo+ty0Y9iBtTI7Vu9izaxZ4msvODtA79K\nbvz65MzTin0mI/HY9GUGAiqpw/rBzobef+zlJu4b3frFEcup6rwth8bUrSbWL5pz\nVcrzYBv2LScVr4O5BMhj6sYb8lBFUcWqnh4EpyDcVn7BTj/xgpgtdM0HrWPB42im\nTNhfrDSGO+/IADu5y9q5RYF5JKGaAlLivqQB3e16uAtSvTPcXxIsiif4kdiZkwQs\ngSmIzmQBAgMBAAECggEAPVFof7n13oq1/UfoFVRqmBL87YXxNnbTUY9bliYsO2BZ\ndfz4LArkWTCEpBmp52FmYaW33P0s+gwtTQ7c6V/RY5QhTk9t0+4aUYhlnlLq6KYN\nzg65UsZRKkZSodGr1eRIiA7/XWRwUOz251z/lTVm+MV80mofx5oS40uajzBjMM/E\nh6IpThzBpvpELexucy3uwAm3TJHnyOSELgmOjYt1Aq/41PE2xbGHgtiIWiFg9lH+\n4IdV9uh7rc3snIN9dZmWQgdCdhZUBv99l0UIaTkrCHRvpcQ9ry1lWOHPKVQieoKT\n8sDVg3WySxVgHMhKwV09NXK6BNzRToe5sQJ9T9HJUwKBgQD+AvcG8nFC8L7rz6b4\njbG73eUXX+vSHGNTRiFW5Aqp7X9x5janzowahK9dOTnX7RQgfznnRusQlDkj+UXe\no9t2RGJa0PV1Ln8GD530GBwPYeGcfK//E34MyguRfFKvtfZx1twUwoEelFU4zJ6H\namS2bTFY/vKARq7Ra2u861iDlwKBgQC/pout3OEf4mhjjgXIb7nmyw9QYCQDgnaj\nDgz/MD3PbnFZbC/n2vxquz8svlVQxx8DL7B6VaU1m44QjzRcRmC4p/ur/+STrJCc\nxncrxgVFzMr8FrvYt0AgnATlRWK7+C3jx7pcp9ydRXkgxD9ynGOoqECUr/JifUQU\nBiyHJatoJwKBgFjLtItLKWjbPAK3PolZDy67bSB0ub1jix1LQNBdO5UXnxuz/JtA\nyx1iEOOn456mFAkgMJ+23OmYxzjaJSCla0y2ryNMNOJX9LOrte3kl7qQ3wuTUvr6\nV3AlGVIsgcNG+vXkxF7Fd9m2xOvsK+buvHJBTaTsyt0o2GgBA1KxeunVAoGABPQr\nHB1ffFF/3ULoh1vL9Fk/VhaGF8khg+lzEI2Qq3HxYBxZyKZya9fXNDLfRa0/8fcj\nmqXoFVCmBWuOMOxox50f9jwxDlghjMvcfLcrn7hBbu6vgFSMRcuCnOKEQNOTbBXX\njVmRbEdFcEFiWnYMZWmj8bPykfUm81WNhRjGK3UCgYEAzpDsX0+HuMrcda58t+8x\nC4auj1sdZSOhGWGlig6axnv9G2XKw4qPvLRSnThKkkfhHAl+/yXaoBAJQJtnOCaP\nHjYG/dFAbc4XiQQr66EkiT2sGzaLfAC8XTCgDPF99o20G3JVx85m6nJSFUVCnzf/\n7zLUYy7YJ+v2AslRGIVgjwk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-rjisr@allwheelchair.iam.gserviceaccount.com",
+  "client_id": "110074069661726282497",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-rjisr%40allwheelchair.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
