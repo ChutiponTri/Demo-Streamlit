@@ -249,7 +249,7 @@ class Stream():
                     # Create Accel X Plot
                     st.write("## Accel X")
                     # st.line_chart(df[accel_x], color=["#FF0000", "#0000FF"])
-                    fig1 = plt.figure()
+                    fig1 = plt.figure(figsize=(2, 2))
                     plt.plot(df[accel_x], label=accel_x)
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
@@ -259,7 +259,7 @@ class Stream():
                     # Create Accel Y Plot
                     st.write("## Accel Y")
                     # st.line_chart(df[accel_y], color=["#FF0000", "#0000FF"])
-                    fig2 = plt.figure()
+                    fig2 = plt.figure(figsize=(2, 2))
                     plt.plot(df[accel_y], label=accel_y)
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
@@ -271,7 +271,7 @@ class Stream():
                             # Create Accel Z Plot
                             st.write("## Accel Z")
                             # st.line_chart(df[accel_z], color=["#FF0000", "#0000FF"])
-                            fig3 = plt.figure()
+                            fig3 = plt.figure(figsize=(2, 2))
                             plt.plot(df[accel_z], label=accel_z)
                             plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                             plt.xlabel("Data")
@@ -281,7 +281,7 @@ class Stream():
                             # Create Gyro X Plot
                             st.write("## Gyro X")
                             # st.line_chart(df[gyro_x], color=["#FF0000", "#0000FF"])
-                            fig4 = plt.figure()
+                            fig4 = plt.figure(figsize=(2, 2))
                             plt.plot(df[gyro_x], label=gyro_y)
                             plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                             plt.xlabel("Data")
@@ -291,7 +291,7 @@ class Stream():
                             # Create Gyro Y Plot
                             st.write("## Gyro Y")
                             # st.line_chart(df[gyro_y], color=["#FF0000", "#0000FF"])
-                            fig5 = plt.figure()
+                            fig5 = plt.figure(figsize=(2, 2))
                             plt.plot(df[gyro_y], label=gyro_y)
                             plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                             plt.xlabel("Data")
@@ -303,7 +303,7 @@ class Stream():
                     # Create Gyro Z Plot
                     st.write("## Gyro Z")
                     # st.line_chart(df[gyro_z], color=["#FF0000", "#0000FF"])
-                    fig6 = plt.figure()
+                    fig6 = plt.figure(figsize=(2, 2))
                     plt.plot(df[gyro_z], label=gyro_z)
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
