@@ -254,7 +254,7 @@ class Stream():
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Accel X (g)")
-                    st.plotly_chart(fig1)
+                    st.plotly_chart(fig1, use_container_width=True)
 
                     # Create Accel Y Plot
                     st.write("## Accel Y")
@@ -264,7 +264,7 @@ class Stream():
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Accel Y (g)")
-                    st.plotly_chart(fig2)
+                    st.plotly_chart(fig2, use_container_width=True)
 
                     try:
                         if len(df[accel_z]) > 1:
@@ -276,7 +276,7 @@ class Stream():
                             plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                             plt.xlabel("Data")
                             plt.ylabel("Accel Z (g)")
-                            st.plotly_chart(fig3)
+                            st.plotly_chart(fig3, use_container_width=True)
 
                             # Create Gyro X Plot
                             st.write("## Gyro X")
@@ -286,7 +286,7 @@ class Stream():
                             plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                             plt.xlabel("Data")
                             plt.ylabel("Gyro X (deg/s)")
-                            st.plotly_chart(fig4)
+                            st.plotly_chart(fig4, use_container_width=True)
 
                             # Create Gyro Y Plot
                             st.write("## Gyro Y")
@@ -296,7 +296,7 @@ class Stream():
                             plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                             plt.xlabel("Data")
                             plt.ylabel("Gyro Y (deg/s)")
-                            st.plotly_chart(fig5)
+                            st.plotly_chart(fig5, use_container_width=True)
                     except:
                         pass
 
@@ -308,7 +308,7 @@ class Stream():
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Gyro Z (deg/s)")
-                    st.plotly_chart(fig6)
+                    st.plotly_chart(fig6, use_container_width=True)
 
                 elif choice == "Raw Data":
                     # Create SQL DataFrame
@@ -355,7 +355,7 @@ class Stream():
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Distance (m)")
-                    st.plotly_chart(tab5_fig1)
+                    st.plotly_chart(tab5_fig1, use_container_width=True)
                     dist1, dist2 = st.columns(2)
                     dist1.write("Distance 1 : %.2f m" % np.max(df["Raw Dist1"]))
                     dist2.write("Distance 2 : %.2f m" % np.max(df["Raw Dist2"]))
@@ -367,7 +367,7 @@ class Stream():
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
                     plt.xlabel("Data")
                     plt.ylabel("Velocity (m/s)")
-                    st.plotly_chart(tab5_fig2)
+                    st.plotly_chart(tab5_fig2, use_container_width=True)
                     max1, max2 = st.columns(2)
                     max1.write("Max Velocity 1 : %.2f m/s" % np.max(np.abs(df["Raw Vel1"])))
                     max2.write("Max Velocity 2 : %.2f m/s" % np.max(np.abs(df["Raw Vel2"])))
@@ -381,7 +381,7 @@ class Stream():
                         plt.plot(self.heart, color="#03C04A", label="Heart Rate")
                         plt.xlabel("Data")
                         plt.ylabel("Heart Rate (bpm)")
-                        st.plotly_chart(tab5_fig3)
+                        st.plotly_chart(tab5_fig3, use_container_width=True)
                         heart1, heart2 = st.columns(2)
                         heart1.write("Max Heart Rate : %.2f bpm" % np.max(self.heart))
                         heart2.write("Mean Heart Rate : %.2f bpm" % np.mean(self.heart))
