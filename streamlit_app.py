@@ -349,7 +349,7 @@ class Stream():
                     plt.style.use("classic")
 
                     st.write("## Raw Distance")
-                    tab5_fig1 = plt.figure()
+                    tab5_fig1 = plt.figure(figsize=(2, 2))
                     plt.plot(df["Raw Dist1"], color="#FF0000", label="Raw Dist1")
                     plt.plot(df["Raw Dist2"], color="#0000FF", label="Raw Dist2")
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
@@ -361,7 +361,7 @@ class Stream():
                     dist2.write("Distance 2 : %.2f m" % np.max(df["Raw Dist2"]))
                     
                     st.write("## Raw Velocity")
-                    tab5_fig2 = plt.figure()
+                    tab5_fig2 = plt.figure(figsize=(2, 2))
                     plt.plot(df["Raw Vel1"], color="#FF0000", label="Raw Vel1")
                     plt.plot(df["Raw Vel2"], color="#0000FF", label="Raw Vel2")
                     plt.legend(bbox_to_anchor=(0.95, 1.14), loc='upper center')
@@ -377,7 +377,7 @@ class Stream():
 
                     if hasattr(self, "heart"):
                         st.write("## Heart Rate")
-                        tab5_fig3 = plt.figure()
+                        tab5_fig3 = plt.figure(figsize=(2, 2))
                         plt.plot(self.heart, color="#03C04A", label="Heart Rate")
                         plt.xlabel("Data")
                         plt.ylabel("Heart Rate (bpm)")
