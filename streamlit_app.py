@@ -62,6 +62,7 @@ class Stream():
             # self.sheetname_list = list(self.firebase.get_database(table_names).keys())
             self.sheetname_list = list(self.firebase.ref.child(table_names).shallow().get().val())
             self.sheetname_list.insert(0, "Please Select Data")
+            self.sheetname_list.sort()
         except Exception as e:
             print(e)
             self.sheetname_list = ["Please Select Data"]
