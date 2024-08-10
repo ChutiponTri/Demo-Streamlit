@@ -48,6 +48,7 @@ class Stream():
 
         # Create Current Username Label
         self.user_list = list(self.firebase.get_database("customers/Username"))
+        self.user_list.sort()
         self.user = st.selectbox("Users", self.user_list)
         self.path = "database/%s_data.db" % self.user
         st.markdown(f"<h3 style='text-align:right; font-size:24px'>User : {self.user}</h3>", unsafe_allow_html=True)
